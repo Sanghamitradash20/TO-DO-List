@@ -1,0 +1,77 @@
+.App {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.search-and-filter {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.search-and-filter input,
+.search-and-filter select {
+  padding: 10px;
+  font-size: 16px;
+}
+
+.search-and-filter input {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+/* ... (rest of your existing styles) ... */
+.App {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+li span {
+  flex-grow: 1;
+}
+
+li button {
+  margin-left: 10px;
+}
+
+@media (max-width: 600px) {
+  .App {
+    padding: 10px;
+  }
+}
