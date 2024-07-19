@@ -14,22 +14,34 @@ function TodoForm({ addTodo }) {
     setDescription('');
   };
 
+  // return (
+  //   <form onSubmit={handleSubmit}>
+  //     <input
+  //       type="text"
+  //       value={title}
+  //       onChange={(e) => setTitle(e.target.value)}
+  //       placeholder="Title"
+  //       required
+  //     />
+  //     <input
+  //       type="text"
+  //       value={description}
+  //       onChange={(e) => setDescription(e.target.value)}
+  //       placeholder="Description"
+  //     />
+  //     <button type="submit">Add Todo</button>
+  //   </form>
+  // );
+
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="todo-form" onSubmit={handleSubmit}>
       <input
         type="text"
+        placeholder="Add a new todo"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        placeholder="Title"
-        required
       />
-      <input
-        type="text"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        placeholder="Description"
-      />
-      <button type="submit">Add Todo</button>
+      <button type="submit">Add</button>
     </form>
   );
 }

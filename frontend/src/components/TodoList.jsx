@@ -20,39 +20,60 @@ function TodoList({ todos, toggleComplete, updateTodo, deleteTodo }) {
     return <p>No todos found.</p>;
   }
 
+  // return (
+  //   <ul>
+  //     {todos.map((todo) => (
+  //       <li key={todo._id}>
+  //         {editId === todo._id ? (
+  //           <>
+  //             <input
+  //               type="text"
+  //               value={editTitle}
+  //               onChange={(e) => setEditTitle(e.target.value)}
+  //             />
+  //             <input
+  //               type="text"
+  //               value={editDescription}
+  //               onChange={(e) => setEditDescription(e.target.value)}
+  //             />
+  //             <button onClick={() => handleUpdate(todo._id)}>Save</button>
+  //             <button onClick={() => setEditId(null)}>Cancel</button>
+  //           </>
+  //         ) : (
+  //           <>
+  //             <span
+  //               style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}
+  //             >
+  //               {todo.title} - {todo.description}
+  //             </span>
+  //             <button onClick={() => toggleComplete(todo._id)}>
+  //               {todo.completed ? "Mark Incomplete" : "Mark Complete"}
+  //             </button>
+  //             <button onClick={() => handleEdit(todo)}>Edit</button>
+  //             <button onClick={() => deleteTodo(todo._id)}>Delete</button>
+  //           </>
+  //         )}
+  //       </li>
+  //     ))}
+  //   </ul>
+  // );
+
   return (
-    <ul>
+    <ul className="todo-list">
       {todos.map((todo) => (
-        <li key={todo._id}>
-          {editId === todo._id ? (
-            <>
-              <input
-                type="text"
-                value={editTitle}
-                onChange={(e) => setEditTitle(e.target.value)}
-              />
-              <input
-                type="text"
-                value={editDescription}
-                onChange={(e) => setEditDescription(e.target.value)}
-              />
-              <button onClick={() => handleUpdate(todo._id)}>Save</button>
-              <button onClick={() => setEditId(null)}>Cancel</button>
-            </>
-          ) : (
-            <>
-              <span
-                style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}
-              >
-                {todo.title} - {todo.description}
-              </span>
-              <button onClick={() => toggleComplete(todo._id)}>
-                {todo.completed ? "Mark Incomplete" : "Mark Complete"}
-              </button>
-              <button onClick={() => handleEdit(todo)}>Edit</button>
-              <button onClick={() => deleteTodo(todo._id)}>Delete</button>
-            </>
-          )}
+        <li key={todo._id} className="todo-item">
+          <input
+            type="checkbox"
+            checked={todo.completed}
+            onChange={() => toggleComplete(todo._id)}
+          />
+          <span className="todo-text">{todo.title}</span>
+          <div className="todo-actions">
+            <button onClick={() => updateTodo(todo._id, { ...todo, title: prompt('Update todo:', todo.title) })}>
+              Edit
+            </button>
+            <button onClick={() => deleteTodo(todo._id)}>Delete</button>
+          </div>
         </li>
       ))}
     </ul>

@@ -151,10 +151,39 @@ function App() {
   };
 
   
+  // return (
+  //   <div className="App">
+  //     {user ? (
+  //       <>
+  //         <h1>Todo App</h1>
+  //         <TodoForm addTodo={addTodo} />
+  //         <SearchAndFilter 
+  //           searchTerm={searchTerm}
+  //           setSearchTerm={setSearchTerm}
+  //           filterStatus={filterStatus}
+  //           setFilterStatus={setFilterStatus}
+  //         />
+  //         {isLoading ? (
+  //           <p>Loading todos...</p>
+  //         ) : (
+  //           <TodoList 
+  //             todos={filteredTodos} 
+  //             toggleComplete={toggleComplete}
+  //             updateTodo={updateTodo}
+  //             deleteTodo={deleteTodo}
+  //           />
+  //         )}
+  //       </>
+  //     ) : (
+  //       <LoginPage onLogin={handleLogin} />
+  //     )}
+  //   </div>
+  // );
+
   return (
     <div className="App">
       {user ? (
-        <>
+        <div className="todo-app">
           <h1>Todo App</h1>
           <TodoForm addTodo={addTodo} />
           <SearchAndFilter 
@@ -173,7 +202,7 @@ function App() {
               deleteTodo={deleteTodo}
             />
           )}
-        </>
+        </div>
       ) : (
         <LoginPage onLogin={handleLogin} />
       )}
