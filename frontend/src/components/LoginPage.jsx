@@ -61,7 +61,7 @@ function LoginPage({ onLogin }) {
         </form>
       </div>
       <div className="login-image-container">
-        {/* <img src="image-m.jpeg" alt="Login" className="login-image" /> */}
+        
         <img src={loginImage} alt="Login" className="login-image" />
 
       </div>
