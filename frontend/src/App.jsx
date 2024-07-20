@@ -37,7 +37,7 @@ function App() {
   const fetchTodos = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch(`http://localhost:3000/todos/${localStorage.getItem("user_id")}`);
+      const response = await fetch(`https://to-do-list-7hg5.onrender.com/todos/${localStorage.getItem("user_id")}`);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -76,7 +76,7 @@ function App() {
     try {
       newTodo.user_id = localStorage.getItem("user_id");
       console.log(localStorage.getItem("user_id"))
-      const response = await fetch(`http://localhost:3000/todo`, {
+      const response = await fetch(`https://to-do-list-7hg5.onrender.com/todo`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -98,7 +98,7 @@ function App() {
 
   const updateTodo = async (id, updatedTodo) => {
     try {
-      const response = await fetch(`http://localhost:3000/todo/${id}`, {
+      const response = await fetch(`https://to-do-list-7hg5.onrender.com/todo/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -117,7 +117,7 @@ function App() {
 
   const deleteTodo = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3000/todo/${id}`, {
+      const response = await fetch(`https://to-do-list-7hg5.onrender.com/todo/${id}`, {
         method: "DELETE",
       });
       if (response.ok) {
@@ -132,7 +132,7 @@ function App() {
 
   const toggleComplete = async (id) => {
     try {
-      const response = await fetch("http://localhost:3000/completed", {
+      const response = await fetch("https://to-do-list-7hg5.onrender.com/completed", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
