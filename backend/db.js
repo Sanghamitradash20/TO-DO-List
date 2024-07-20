@@ -7,7 +7,7 @@ mongoose.connect("mongodb://localhost:27017/todolist")
 const todoSchema = mongoose.Schema({
     user_id: String,
     title: String,
-    description: String,
+    // description: String,
     completed: Boolean
 });
 

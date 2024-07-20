@@ -49,7 +49,7 @@ app.post("/todo", async function(req, res) {
     try {
         const newTodo = await todo.create({
             title: createPayload.title,
-            description: createPayload.description,
+            // description: createPayload.description,
             user_id: createPayload.user_id,
             completed: false
         });
@@ -108,10 +108,12 @@ app.put("/completed", async function(req, res) {
 // Update Todo
 app.put("/todo/:id", async function(req, res) {
     const { id } = req.params;
-    const { title, description } = req.body;
+    // const { title, description } = req.body;
+    const { title } = req.body;
     try {
         const updatedTodo = await todo.findByIdAndUpdate(id, 
-            { title, description },
+            // { title, description },
+            { title },
             { new: true }
         );
         if (!updatedTodo) {
