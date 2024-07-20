@@ -1,232 +1,275 @@
-/* .App {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.search-and-filter {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.search-and-filter input,
-.search-and-filter select {
-  padding: 10px;
-  font-size: 16px;
-}
-
-.search-and-filter input {
-  flex-grow: 1;
-  margin-right: 10px;
-}
-
-/* ... (rest of your existing styles) ... */
-/*.App {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-}
-
-input[type="text"] {
-  padding: 10px;
-  margin-bottom: 10px;
-  font-size: 16px;
-}
-
-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-}
-
-li span {
-  flex-grow: 1;
-}
-
-li button {
-  margin-left: 10px;
-}
-
-@media (max-width: 600px) {
-  .App {
-    padding: 10px;
-  }
-} */
-
-/* General styles */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
+/* General Styles */
+body, html, #root {
   margin: 0;
   padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
 }
 
-.App {
+
+/* Navbar */
+.navbar {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  min-height: 100vh;
-  padding: 20px;
-  box-sizing: border-box;
-}
-
-/* Login Page styles */
-.login-container {
-  background-color: white;
-  border-radius: 8px;
-  padding: 20px;
+  background-color: #fceac0;
+  padding: 1rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
 }
 
-.login-container h2 {
-  margin-top: 0;
-  color: #333;
-}
-
-.login-container form {
+.nav-logo {
   display: flex;
-  flex-direction: column;
+  align-items: center;
 }
 
-.login-container input {
-  margin-bottom: 10px;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+.nav-logo-img {
+  width: 40px; /* Adjust size as needed */
+  height: auto;
+  margin-right: 10px; /* Space between image and text */
 }
 
-.login-container button {
-  padding: 10px;
-  background-color: #007bff;
+.nav-links {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-button {
+  background-color: rgb(194, 149, 52);
   color: white;
   border: none;
-  border-radius: 4px;
+  padding: 10px 20px;
   cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
 }
 
-.login-container button:hover {
-  background-color: #0056b3;
+.nav-button:hover {
+  background-color: #635117;
 }
 
-/* Todo App styles */
-.todo-app {
+
+/* Header Styles */
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 70px); /* Adjust height based on navbar */
   background-color: white;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 100%;
+  text-align: center;
+  padding: 2rem;
+}
+
+.home-content {
   max-width: 600px;
+  margin: 0 auto;
+}
+
+.tagline {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.description {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.create-todo-button {
+  background-color: rgb(194, 149, 52);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.create-todo-button:hover {
+  background-color: #635117;
+}
+
+/* Todo App Styles */
+.todo-app {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: rgb(194, 149, 52);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .todo-form {
   display: flex;
-  margin-bottom: 20px;
+  justify-content: space-between;
+  margin-bottom: 1rem;
 }
 
 .todo-form input {
-  flex-grow: 1;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px 0 0 4px;
+  flex: 1;
+  padding: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .todo-form button {
-  padding: 8px 16px;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  border-radius: 0 4px 4px 0;
-  cursor: pointer;
-}
-
-.todo-form button:hover {
-  background-color: #218838;
+  padding: 0.5rem 1rem;
 }
 
 .todo-list {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
 }
 
 .todo-item {
   display: flex;
   align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid #eee;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ddd;
 }
 
 .todo-item:last-child {
   border-bottom: none;
 }
 
-.todo-item input[type="checkbox"] {
-  margin-right: 10px;
+.todo-text {
+  flex: 1;
+  margin-left: 0.5rem;
 }
 
-.todo-item .todo-text {
-  flex-grow: 1;
+.todo-actions button {
+  margin-left: 0.5rem;
 }
 
-.todo-item .todo-actions {
+/* Loading Style */
+.loading {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* LoginPage.css */
+
+.login-container {
   display: flex;
+  height: 100vh;
 }
 
-.todo-item button {
-  margin-left: 5px;
-  padding: 5px 10px;
-  background-color: #dc3545;
+.login-form-container, .login-description {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form-container {
+  background-color: white;
+  padding: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-right: 2px solid #007BFF;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form input {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.login-form button {
+  padding: 0.75rem;
+  background-color: #007BFF;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
-.todo-item button:hover {
-  background-color: #c82333;
+.login-form button:hover {
+  background-color: #0056b3;
 }
 
-/* Search and Filter styles */
-.search-filter {
+.login-description {
+  background-color: #007BFF;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+}
+
+.description-heading {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+/* LoginPage.css */
+.login-container {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
+  height: 100vh;
 }
 
-.search-filter input {
-  flex-grow: 1;
-  padding: 8px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  margin-right: 10px;
+.login-form-container, .login-image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
 }
 
-.search-filter select {
-  padding: 8px;
+.login-form-container {
+  background-color: white;
+  border-right: 2px solid white;
+}
+
+.login-form-container h2 {
+  margin-bottom: 1rem;
+}
+
+.login-form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-form-container label {
+  margin-bottom: 1rem;
+}
+
+.login-form-container input {
+  padding: 0.5rem;
+  margin-top: 0.5rem;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 5px;
+}
+
+.login-form-container button {
+  padding: 0.75rem;
+  border: none;
+  background-color: #007BFF;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-form-container button:hover {
+  background-color: #0056b3;
+}
+
+.error-message {
+  color: red;
+  margin: 0.5rem 0;
+}
+
+.login-image-container {
+  background-color: white;
+}
+
+.login-image {
+  max-width: 100%;
+  height: auto;
 }

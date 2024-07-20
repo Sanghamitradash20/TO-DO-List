@@ -1,8 +1,13 @@
-// LoginPage.js
 import React, { useState } from 'react';
-import axios from 'axios';
+import '../App.css';
+import loginImage from './image-m.jpeg';
 
-const LoginPage = ({ onLogin }) => {
+
+
+
+
+
+function LoginPage({ onLogin }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -10,69 +15,59 @@ const LoginPage = ({ onLogin }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3000/api/login', { username, password });
-      if (response.data.success) {
-        localStorage.setItem("user_name",username);
-        localStorage.setItem("user_id",response.data.user.id);
-        onLogin(response.data.user);
+      const response = await fetch('http://localhost:3000/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password }),
+      });
+      const data = await response.json();
+      if (data.success) {
+        localStorage.setItem('user_id', data.user.id);
+        onLogin(data.user);
       } else {
-        setError('Invalid credentials');
+        setError('Invalid username or password');
       }
     } catch (err) {
+      console.error('Error logging in:', err);
       setError('An error occurred. Please try again.');
     }
   };
 
-//   return (
-//     <div className="login-container">
-//       <h2>Login</h2>
-//       <form onSubmit={handleSubmit}>
-//         <div>
-//           <label htmlFor="username">Username:</label>
-//           <input
-//             type="text"
-//             id="username"
-//             value={username}
-//             onChange={(e) => setUsername(e.target.value)}
-//             required
-//           />
-//         </div>
-//         <div>
-//           <label htmlFor="password">Password:</label>
-//           <input
-//             type="password"
-//             id="password"
-//             value={password}
-//             onChange={(e) => setPassword(e.target.value)}
-//             required
-//           />
-//         </div>
-//         <button type="submit">Login</button>
-//       </form>
-//       {error && <p className="error">{error}</p>}
-//     </div>
-//   );
-
-return (
+  return (
     <div className="login-container">
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Login</button>
-      </form>
+      <div className="login-form-container">
+        <h2></h2>
+        <form onSubmit={handleSubmit}>
+          <label>
+            Username:
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </label>
+          <label>
+            Password:
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </label>
+          {error && <p className="error-message">{error}</p>}
+          <button type="submit">Login</button>
+        </form>
+      </div>
+      <div className="login-image-container">
+        {/* <img src="image-m.jpeg" alt="Login" className="login-image" /> */}
+        <img src={loginImage} alt="Login" className="login-image" />
+
+      </div>
     </div>
   );
-};
+}
 
 export default LoginPage;
+

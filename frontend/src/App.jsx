@@ -3,8 +3,8 @@ import './App.css';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
 import SearchAndFilter from './components/SearchAndFilter';
-import LoginPage from './components/LoginPage'; 
-
+import LoginPage from './components/LoginPage';
+import todoLogo from './components/image-n.jpeg'; // Import the image
 
 function App() {
   const [user, setUser] = useState(null);
@@ -13,8 +13,6 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('');
   const [filterStatus, setFilterStatus] = useState('all');
   const [isLoading, setIsLoading] = useState(false);
-
-  
 
   useEffect(() => {
     if (user) {
@@ -32,7 +30,9 @@ function App() {
     setUser(userData);
   };
 
-  
+  const handleLogout = () => {
+    setUser(null);
+  };
 
   const fetchTodos = async () => {
     setIsLoading(true);
@@ -50,6 +50,7 @@ function App() {
       setIsLoading(false);
     }
   };
+
   const filterTodos = () => {
     let result = todos;
 
@@ -80,7 +81,6 @@ function App() {
         headers: {
           "Content-Type": "application/json",
         },
-        
         body: JSON.stringify(newTodo),
       });
       if (!response.ok) {
@@ -150,41 +150,26 @@ function App() {
     }
   };
 
-  
-  // return (
-  //   <div className="App">
-  //     {user ? (
-  //       <>
-  //         <h1>Todo App</h1>
-  //         <TodoForm addTodo={addTodo} />
-  //         <SearchAndFilter 
-  //           searchTerm={searchTerm}
-  //           setSearchTerm={setSearchTerm}
-  //           filterStatus={filterStatus}
-  //           setFilterStatus={setFilterStatus}
-  //         />
-  //         {isLoading ? (
-  //           <p>Loading todos...</p>
-  //         ) : (
-  //           <TodoList 
-  //             todos={filteredTodos} 
-  //             toggleComplete={toggleComplete}
-  //             updateTodo={updateTodo}
-  //             deleteTodo={deleteTodo}
-  //           />
-  //         )}
-  //       </>
-  //     ) : (
-  //       <LoginPage onLogin={handleLogin} />
-  //     )}
-  //   </div>
-  // );
-
   return (
     <div className="App">
-      {user ? (
+      <nav className="navbar">
+        <div className="nav-logo">
+          <img src={todoLogo} alt="Todo Logo" className="nav-logo-img" /> {/* Add the logo image */}
+          <h1>Todo</h1>
+        </div>
+        <div className="nav-links">
+          <button className="nav-button">About Us</button>
+          {user ? (
+            <button className="nav-button" onClick={handleLogout}>Logout</button>
+          ) : (
+            <button className="nav-button" onClick={() => setUser('login')}>Login</button>
+          )}
+        </div>
+      </nav>
+      {user === 'login' ? (
+        <LoginPage onLogin={handleLogin} />
+      ) : user ? (
         <div className="todo-app">
-          <h1>Todo App</h1>
           <TodoForm addTodo={addTodo} />
           <SearchAndFilter 
             searchTerm={searchTerm}
@@ -204,7 +189,13 @@ function App() {
           )}
         </div>
       ) : (
-        <LoginPage onLogin={handleLogin} />
+        <header className="header">
+          <div className="home-content">
+            <h2 className="tagline">Plan your day with us</h2>
+            <p className="description">Manage your tasks and stay focused and organized with our todo app</p>
+            <button className="create-todo-button" onClick={() => setUser('login')}>Create Todo List</button>
+          </div>
+        </header>
       )}
     </div>
   );
