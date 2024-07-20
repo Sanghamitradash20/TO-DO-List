@@ -56,8 +56,8 @@ function App() {
 
     if (searchTerm) {
       result = result.filter(todo => 
-        todo.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        todo.description.toLowerCase().includes(searchTerm.toLowerCase())
+        todo.title.toLowerCase().includes(searchTerm.toLowerCase()) 
+        // todo.description.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
 
@@ -83,6 +83,7 @@ function App() {
         },
         body: JSON.stringify(newTodo),
       });
+      console.log(response.status)
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
