@@ -9,6 +9,13 @@ const path = require('path');
 app.use(express.json());
 app.use(cors());
 
+const corsOptions = {
+    origin: 'https://669c0f4359d015228860b485--darling-biscochitos-9e2246.netlify.app/',
+    optionsSuccessStatus: 200,
+  };
+ 
+  app.use(cors(corsOptions));
+
 // Add this function to read user credentials
 const getUserCredentials = () => {
     const filePath = path.join(__dirname, 'users.json');
